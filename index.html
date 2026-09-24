@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f7f3eb" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="description" content="Time Glitch — Italian 3: fix tense glitches between ORA and ALLORA." />
+  <meta property="og:title" content="Time Glitch — Italian 3" />
+  <meta property="og:description" content="Split-screen chat: pick Presente, Imperfetto, or Passato prossimo to fix the glitch." />
+  <meta property="og:type" content="website" />
+  <title>Time Glitch — Italian 3</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="styles.css?v=1" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23e6dcf3'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-size='28'%3E%E2%8C%9A%3C/text%3E%3C/svg%3E" />
+</head>
+<body>
+  <div class="stage">
+    <div class="phone" id="phone" role="application" aria-label="Time Glitch Italian tense practice">
+      <div class="status-bar" aria-hidden="true">
+        <span class="status-time" id="statusTime">9:41</span>
+        <span class="status-notch"></span>
+        <span class="status-icons">
+          <span class="sig"></span>
+          <span class="wifi"></span>
+          <span class="bat"></span>
+        </span>
+      </div>
+
+      <header class="app-header">
+        <div class="brand">
+          <span class="logo" aria-hidden="true">⏳</span>
+          <div>
+            <h1>Time Glitch</h1>
+            <p class="subtitle">Ora · Allora · Italiano 3</p>
+          </div>
+        </div>
+        <div class="header-actions">
+          <button type="button" class="icon-btn" id="btnMute" aria-label="Mute sound" title="Sound">🔇</button>
+          <button type="button" class="icon-btn" id="btnHelp" aria-label="Help level" title="Help level">🎚️</button>
+        </div>
+      </header>
+
+      <!-- Start -->
+      <section class="screen active" id="screenStart" aria-label="Start">
+        <div class="hero">
+          <div class="hero-tag">Mini demo · 6 glitch</div>
+          <div class="hero-art" aria-hidden="true">
+            <div class="split-preview">
+              <div class="pv-now"><span>ORA</span><p>ehi raga…</p></div>
+              <div class="pv-then"><span>ALLORA</span><p>sabato…</p></div>
+            </div>
+          </div>
+          <p class="hero-pitch">Il tempo si è spezzato. Nella chat <strong>ORA</strong> e <strong>ALLORA</strong> i verbi glitchano. Scegli il tempo giusto: <strong>Presente</strong>, <strong>Imperfetto</strong> o <strong>Passato prossimo</strong>.</p>
+        </div>
+
+        <div class="help-panel" id="helpPanelStart">
+          <p class="help-label">Livello di aiuto</p>
+          <div class="help-row" role="group" aria-label="Help level">
+            <button type="button" class="help-chip" data-help="more">More help</button>
+            <button type="button" class="help-chip" data-help="mid" aria-pressed="true">Just right</button>
+            <button type="button" class="help-chip" data-help="challenge">Challenge me</button>
+          </div>
+          <p class="help-hint" id="helpHint">Italian + short context under each glitch.</p>
+        </div>
+
+        <button type="button" class="primary-btn" id="btnStart">Ripara · Fix the glitch</button>
+      </section>
+
+      <!-- Play -->
+      <section class="screen" id="screenPlay" aria-label="Glitch rounds" hidden>
+        <div class="progress" id="progress" aria-label="Round progress"></div>
+
+        <div class="split" id="splitChat">
+          <div class="pane pane-now" id="paneNow">
+            <div class="pane-label">ORA · Now</div>
+            <div class="thread" id="threadNow" aria-live="polite"></div>
+          </div>
+          <div class="pane pane-then" id="paneThen">
+            <div class="pane-label">ALLORA · Then</div>
+            <div class="thread" id="threadThen" aria-live="polite"></div>
+          </div>
+        </div>
+
+        <div class="glitch-dock" id="glitchDock">
+          <p class="context" id="roundContext"></p>
+          <p class="gloss" id="roundGloss" hidden></p>
+          <p class="tense-tip" id="tenseTip" hidden></p>
+          <p class="prompt">Quale tempo sistema il glitch?</p>
+          <div class="tense-row" role="group" aria-label="Choose tense">
+            <button type="button" class="tense-chip" data-tense="presente">Presente</button>
+            <button type="button" class="tense-chip" data-tense="imperfetto">Imperfetto</button>
+            <button type="button" class="tense-chip" data-tense="passato">Passato prossimo</button>
+          </div>
+          <div class="feedback" id="feedback" hidden role="status" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <!-- End -->
+      <section class="screen" id="screenEnd" aria-label="End" hidden>
+        <div class="end-header">
+          <div class="end-icon" aria-hidden="true">✨</div>
+          <h2>Glitch riparato</h2>
+          <p class="score-line" id="scoreLine">Score: 0/6 first-try</p>
+        </div>
+        <div class="replay" id="replayReel" aria-label="Fixed lines replay"></div>
+        <div class="end-actions">
+          <button type="button" class="primary-btn" id="btnReplay">Di nuovo · Replay</button>
+          <button type="button" class="ghost-btn" id="btnChangeHelp">Cambia aiuto</button>
+        </div>
+      </section>
+    </div>
+  </div>
+  <script src="app.js?v=1"></script>
+</body>
+</html>

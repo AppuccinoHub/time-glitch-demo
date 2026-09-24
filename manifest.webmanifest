@@ -1,0 +1,10 @@
+{
+  "name": "Time Glitch — Italian 3",
+  "short_name": "Time Glitch",
+  "description": "Fix tense glitches between ORA and ALLORA: Presente, Imperfetto, Passato prossimo.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f7f3eb",
+  "theme_color": "#f7f3eb",
+  "lang": "it"
+}
